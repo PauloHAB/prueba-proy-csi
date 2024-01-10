@@ -1,1 +1,74 @@
-<p>user-list works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CSI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <input class="form-control me-2" [(ngModel)]="buscarUsuario" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="getUser()" >Search</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h1 class="tituloP">CSI usuarios registrados 2020 - 2023</h1> 
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table #userT datatable [dtOptions]="dtOptions" class="row-border hover">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of userList">
+              <td>{{usuario.name}}</td>
+              <td>{{usuario.lname}}</td>
+              <td>{{usuario.email}}</td>
+              <td (click)="verUsuario(1,usuario)"><i class="fa fa-eye"></i></td>
+            </tr> 
+          </tbody>
+      </table> 
+    </div>
+
+    <div class="col-md-4"> 
+      <img src="data:image/png;base64,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">
+      <h1>Control y registros</h1>
+      <p>Lista de usuarios</p>
+      <button type="button" class="btn btn-success" (click)="verUsuario(1,{})" >Create new User</button>
+
+    </div>
+  </div>
+</div>
+
+

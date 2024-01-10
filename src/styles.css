@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+h1 {
+    color:rgb(15, 153, 34);
+}
+ 
+.newUser { 
+    margin-left: 8px;
+}
+
+
+.cardTittle {
+    color:rgb(15, 153, 34);
+}
+
+.tituloP {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}

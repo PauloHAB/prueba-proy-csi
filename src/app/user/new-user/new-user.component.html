@@ -1,1 +1,30 @@
-<p>new-user works!</p>
+<!-- Modal Formulario User --> 
+<div class="card">
+    <div class="card-header cardTittle">
+        <div class="row">
+            <div class="col-md-8">USER</div>
+            <div class="col-md-4"><i (click)="modalActive.close(0)" class="fa fa-times-circle fa-lg"
+                style="position: absolute; top: 12px; right: 15px;cursor: pointer;"></i></div>
+        </div> 
+    </div>
+    <div class="card-body userForm">
+        <form>
+            <label for="name">First names:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="usuario.name"><br><br>
+            <label for="name">Last name:</label>
+            <input type="text" id="lname" name="lname" [(ngModel)]="usuario.lname"><br><br>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" [(ngModel)]="usuario.email"><br><br>   
+        </form>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-dark">Close</button>
+        <button type="button" class="btn btn-success newUser" (click)="createtUsuario()">Save changes</button>
+    </div>
+
+</div>  
+ 
+
+
+       
+    
